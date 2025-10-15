@@ -5,7 +5,9 @@
   "main": "index.html",
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./css/output.css --watch",
-    "build": "tailwindcss -i ./src/input.css -o ./css/output.css --minify"
+    "build": "npm run build:css && npm run build:copy",
+    "build:css": "tailwindcss -i ./src/input.css -o ./css/output.css --minify",
+    "build:copy": "cpx 'index.html assets/**/*' public && cpx './css/output.css' public/css"
   },
   "keywords": [
     "tailwind",
@@ -14,6 +16,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.0",
+    "cpx": "^1.2.1"  
   }
 }
+
